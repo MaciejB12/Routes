@@ -1,0 +1,129 @@
+{
+"routes" : {
+	"element1" : {
+		"nr" : 1,
+		"type" : "li",
+		"name" : "LI1",
+		"sas1" : "NULL",
+		"sas2" : 2,
+		"sas3" : "NULL"
+		},
+	"element2" : {
+		"nr" : 2,
+		"type" : "signal",
+		"orientation" : "N",
+		"name" : "A",
+		"sas1" : 1,
+		"sas2" : 3,
+		"sas3" : "NULL",
+		"prot" : 0
+		},
+	"element3" : {
+		"nr" : 3,
+		"type" : "track",
+		"name" : "ITA",
+		"sas1" : 2,
+		"sas2" : 4,
+		"sas3" : "NULL"
+		},
+	"element4" : {
+		"nr" : 4,
+		"type" : "switch",
+		"orientation" : "N",
+		"name" : "Z1",
+		"sas1" : 3,
+		"sas2" : 5,
+		"sas3" : 12
+		},
+	"element5" : {
+		"nr" : 5,
+		"type" : "signal",
+		"orientation" : "P",
+		"name" : "B",
+		"sas1" : 6,
+		"sas2" : 4,
+		"sas3" : "NULL",
+		"prot" : 0
+		},
+	"element6" : {
+		"nr" : 6,
+		"type" : "track",
+		"name" : "IT1",
+		"sas1" : 5,
+		"sas2" : 7,
+		"sas3" : "NULL"
+		},
+	"element7" : {
+		"nr" : 7,
+		"type" : "signal",
+		"orientation" : "N",
+		"name" : "E",
+		"sas1" : 6,
+		"sas2" : 8,
+		"sas3" : "NULL",
+		"prot" : 0
+		},
+	"element8" : {
+		"nr" : 8,
+		"type" : "switch",
+		"orientation" : "P",
+		"name" : "Z2",
+		"sas1" : 9,
+		"sas2" : 7,
+		"sas3" : 14
+		},
+	"element9" : {
+		"nr" : 9,
+		"type" : "track",
+		"name" : "ITF",
+		"sas1" : 8,
+		"sas2" : 10,
+		"sas3" : "NULL"
+		},
+	"element10" : {
+		"nr" : 10,
+		"type" : "signal",
+		"orientation" : "P",
+		"name" : "F",
+		"sas1" : 11,
+		"sas2" : 9,
+		"sas3" : "NULL",
+		"prot" : 0
+		},
+	"element11" : {
+		"nr" : 11,
+		"type" : "li",
+		"name" : "LI2",
+		"sas1" : 10,
+		"sas2" : "NULL",
+		"sas3" : "NULL"
+		},
+	"element12" : {
+		"nr" : 12,
+		"type" : "signal",
+		"orientation" : "P",
+		"name" : "C",
+		"sas1" : 13,
+		"sas2" : 4,
+		"sas3" : "NULL"
+		},
+	"element13" : {
+		"nr" : 13,
+		"type" : "track",
+		"name" : "IT2",
+		"sas1" : 12,
+		"sas2" : 14,
+		"sas3" : "NULL"
+		},
+	"element14" : {
+		"nr" : 14,
+		"type" : "signal",
+		"orientation" : "N",
+		"name" : "D",
+		"sas1" : 13,
+		"sas2" : 8,
+		"sas3" : "NULL",
+		"prot" : 0
+		}
+	}
+}

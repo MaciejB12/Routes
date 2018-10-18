@@ -7,7 +7,7 @@
 
 from routes_class import Routes
 
-filename = "routes.json"
+filename = "routes3.json"
 routes = Routes(filename, "P")
 
 try:
@@ -15,11 +15,11 @@ try:
 		e = routes.elements[element]
 		type = e["type"]
 		try:
-			position = e["position"]
-			if type == "signal" and position == routes.position:
-				routes.search_elements(element, position)
+			orientation = e["orientation"]
+			if type == "signal" and orientation == routes.orientation:
+				routes.search_elements(element, orientation)
 		except KeyError as error:
 			# print(f"No key {error} in element {element}")
-			continue			
+			continue	
 except FileNotFoundError as error:
 	print(f"No JSON file: {error}")
