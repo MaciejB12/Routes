@@ -1,6 +1,7 @@
 {
 "routes" : {
 	"element1" : {
+		"test1": "cos",
 		"nr" : 1,
 		"type" : "li",
 		"name" : "LI1",
