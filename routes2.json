@@ -11,7 +11,7 @@
 	"element2" : {
 		"nr" : 2,
 		"type" : "signal",
-		"orientation" : "N",
+		"position" : "N",
 		"name" : "A",
 		"sas1" : 1,
 		"sas2" : 3,
@@ -29,7 +29,7 @@
 	"element4" : {
 		"nr" : 4,
 		"type" : "switch",
-		"orientation" : "N",
+		"position" : "N",
 		"name" : "Z1",
 		"sas1" : 3,
 		"sas2" : 5,
@@ -38,7 +38,7 @@
 	"element5" : {
 		"nr" : 5,
 		"type" : "signal",
-		"orientation" : "P",
+		"position" : "P",
 		"name" : "B",
 		"sas1" : 6,
 		"sas2" : 4,
@@ -56,7 +56,7 @@
 	"element7" : {
 		"nr" : 7,
 		"type" : "signal",
-		"orientation" : "N",
+		"position" : "N",
 		"name" : "E",
 		"sas1" : 6,
 		"sas2" : 8,
@@ -66,7 +66,7 @@
 	"element8" : {
 		"nr" : 8,
 		"type" : "switch",
-		"orientation" : "P",
+		"position" : "P",
 		"name" : "Z2",
 		"sas1" : 9,
 		"sas2" : 7,
@@ -83,7 +83,7 @@
 	"element10" : {
 		"nr" : 10,
 		"type" : "signal",
-		"orientation" : "P",
+		"position" : "P",
 		"name" : "F",
 		"sas1" : 11,
 		"sas2" : 9,
@@ -101,7 +101,7 @@
 	"element12" : {
 		"nr" : 12,
 		"type" : "signal",
-		"orientation" : "P",
+		"position" : "P",
 		"name" : "C",
 		"sas1" : 13,
 		"sas2" : 4,
@@ -119,7 +119,7 @@
 	"element14" : {
 		"nr" : 14,
 		"type" : "signal",
-		"orientation" : "N",
+		"position" : "N",
 		"name" : "D",
 		"sas1" : 13,
 		"sas2" : 15,
@@ -129,7 +129,7 @@
 	"element15" : {
 		"nr" : 15,
 		"type" : "switch",
-		"orientation" : "P",
+		"position" : "P",
 		"name" : "Z3",
 		"sas1" : 8,
 		"sas2" : 14,
@@ -138,7 +138,7 @@
 	"element16" : {
 		"nr" : 16,
 		"type" : "signal",
-		"orientation" : "N",
+		"position" : "N",
 		"name" : "G",
 		"sas1" : 17,
 		"sas2" : 15,
@@ -156,7 +156,7 @@
 	"element18" : {
 		"nr" : 18,
 		"type" : "signal",
-		"orientation" : "P",
+		"position" : "P",
 		"name" : "H",
 		"sas1" : 17,
 		"sas2" : 19,
