@@ -7,6 +7,7 @@
 
 import json
 from yaml import load
+from yaml.scanner import ScannerError
 from collections import OrderedDict
 
 class BreakFunc(Exception): pass
@@ -14,8 +15,16 @@ class BreakFunc(Exception): pass
 class FlankProt:
 	
 	def __init__(self, filename, ort):
-		with open(filename, "r") as f: # for YAML
-			elements_file = load(f)
+		try:
+			# with open(filename, "r") as f: for YAML
+			#	elements_file = load(f)
+			with open(filename, "r") as f: # for JSON
+				elements_file = json.load(f)
+		except ScannerError as e:
+			print(f"YAML SCANNER ERROR: {e}")
+		except json.JSONDecodeError as e:
+			print(f"JSON decode error: {e}")
+
 		self.elements = elements_file["routes"]
 		self.ort = ort
 		self.route = OrderedDict()
