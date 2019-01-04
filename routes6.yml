@@ -18,7 +18,7 @@ routes :
   sas2 : 13
   sas3 : ~
   prot : ~
- element3 :
+ element13 :
   nr   : 13
   type : track
   name : ITB
@@ -205,10 +205,80 @@ routes :
   sas1 : 46
   sas2 : 48
   sas3 : 26
-   
-   
-   
-   
+ element48 :
+  nr   : 48
+  type : signal 
+  orientation : P
+  name : G
+  sas1 : 49
+  sas2 : 47
+  sas3 : ~
+  prot : ~
+ element49 :
+  nr   : 49
+  type : track
+  name : IT4b
+  sas1 : 48
+  sas2 : 50
+  sas3 : ~
+ element50 :
+  nr   : 50
+  type : signal 
+  orientation : N
+  name : Tz2
+  sas1 : 49
+  sas2 : 51
+  sas3 : ~
+  prot : ~
+ element51 :
+  nr   : 51
+  type : eot
+  name : EOT2
+  sas1 : 50
+  sas2 : ~
+  sas3 : ~
+ element61 :
+  nr   : 61
+  type : dest
+  orientation : P
+  name : Sh1
+  sas1 : 62
+  sas2 : ~
+  sas3 : ~
+ element62 :
+  nr   : 62
+  type : sh_signal 
+  orientation : N
+  name : Tm1
+  sas1 : 61
+  sas2 : 63
+  sas3 : ~
+  prot : ~
+ element63 :
+  nr   : 63
+  type : switch
+  orientation : N
+  name : Z10
+  sas1 : 62
+  sas2 : 46
+  sas3 : 64
+ element64 :
+  nr   : 64
+  type : sh_signal 
+  orientation : P
+  name : Tm2
+  sas1 : 65
+  sas2 : 63
+  sas3 : ~
+  prot : ~
+ element65 :
+  nr   : 65
+  type : dest
+  orientation : N
+  name : Sh2
+  sas1 : 64
+  sas2 : ~
+  sas3 : ~
    
    
    
