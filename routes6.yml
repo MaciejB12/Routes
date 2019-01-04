@@ -1,0 +1,222 @@
+routes :
+ # defaults : &li
+  # nr   : 11
+  # type : li
+ element1 :
+  nr   : 11
+  type : li 
+  name : LIB
+  sas1 : ~
+  sas2 : 12
+  sas3 : ~
+ element12 :
+  nr   : 12
+  type : signal 
+  orientation : N
+  name : B
+  sas1 : 11
+  sas2 : 13
+  sas3 : ~
+  prot : ~
+ element3 :
+  nr   : 13
+  type : track
+  name : ITB
+  sas1 : 12
+  sas2 : 14
+  sas3 : ~
+ element14 :
+  nr   : 14
+  type : switch
+  orientation : N
+  name : Z1
+  sas1 : 13
+  sas2 : 15
+  sas3 : 24
+ element15 :
+  nr   : 15
+  type : track
+  name : IT1
+  sas1 : 14
+  sas2 : 16
+  sas3 : ~
+ element16 :
+  nr : 16
+  type : switch
+  orientation : P
+  name : Z9
+  sas1 : 17
+  sas2 : 15
+  sas3 : 27
+ element17 :
+  nr : 17
+  type : track
+  name : ITK
+  sas1 : 16
+  sas2 : 18
+  sas3 : ~
+ element18 :
+  nr   : 18
+  type : signal 
+  orientation : P
+  name : K
+  sas1 : 19
+  sas2 : 17
+  sas3 : ~
+  prot : ~
+ element19 :
+  nr   : 19
+  type : li 
+  name : LIK
+  sas1 : 18
+  sas2 : ~
+  sas3 : ~
+ element21 :
+  nr   : 21
+  type : li 
+  name : LIA
+  sas1 : ~
+  sas2 : 22
+  sas3 : ~
+ element22 :
+  nr   : 22
+  type : signal 
+  orientation : N
+  name : A
+  sas1 : 21
+  sas2 : 23
+  sas3 : ~
+  prot : ~
+ element23 :
+  nr   : 23
+  type : track
+  name : ITA
+  sas1 : 22
+  sas2 : 24
+  sas3 : ~
+ element24 :
+  nr : 24
+  type : switch
+  orientation : P
+  name : Z2
+  sas1 : 25
+  sas2 : 23
+  sas3 : 14
+ element25 :
+  nr : 25
+  type : switch
+  orientation : N
+  name : Z3
+  sas1 : 24
+  sas2 : 26
+  sas3 : 45
+ element26 :
+  nr : 26
+  type : switch
+  orientation : P
+  name : Z7
+  sas1 : 27
+  sas2 : 25
+  sas3 : 47
+ element27 :
+  nr : 27
+  type : switch
+  orientation : N
+  name : Z8
+  sas1 : 26
+  sas2 : 28
+  sas3 : 16
+ element28 :
+  nr   : 28
+  type : track
+  name : ITH
+  sas1 : 27
+  sas2 : 29
+  sas3 : ~
+ element29 :
+  nr   : 29
+  type : signal 
+  orientation : P
+  name : H
+  sas1 : 30
+  sas2 : 28
+  sas3 : ~
+  prot : ~
+ element30 :
+  nr   : 30
+  type : li 
+  name : LIH
+  sas1 : 29
+  sas2 : ~
+  sas3 : ~
+ element41 :
+  nr   : 41
+  type : eot
+  name : EOT1
+  sas1 : 42
+  sas2 : ~
+  sas3 : ~
+ element42 :
+  nr   : 29
+  type : signal 
+  orientation : P
+  name : Tz1
+  sas1 : 43
+  sas2 : 41
+  sas3 : ~
+  prot : ~
+ element43 :
+  nr   : 43
+  type : track
+  name : IT4a
+  sas1 : 42
+  sas2 : 44
+  sas3 : ~
+ element44 :
+  nr   : 44
+  type : signal 
+  orientation : N
+  name : C
+  sas1 : 43
+  sas2 : 45
+  sas3 : ~
+  prot : ~
+ element45 :
+  nr : 45
+  type : switch
+  orientation : P
+  name : Z4
+  sas1 : 46
+  sas2 : 44
+  sas3 : 25
+ element46 :
+  nr : 46
+  type : switch
+  orientation : P
+  name : Z5
+  sas1 : 47
+  sas2 : 45
+  sas3 : 63
+ element47 :
+  nr : 47
+  type : switch
+  orientation : N
+  name : Z6
+  sas1 : 46
+  sas2 : 48
+  sas3 : 26
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
