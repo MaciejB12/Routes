@@ -41,7 +41,8 @@ class FlankProt:
 	
 	def check_flank(self, item, op_pos, nxt):
 		# czy element jest semaforem skierowanym w dobrą stronę - może dawać ochr. boczną
-		if self.elms[item]["type"] == "signal" and nxt == "sas1":
+		if self.elms[item]["type"] == "signal" or \
+			self.elms[item]["type"] == "sh_signal" and nxt == "sas1":
 			return 1
 		# czy element jest zwr skierowaną w dobrą stronę - może dawać ochr. boczną
 		elif self.elms[item]["type"] == "switch" and \
@@ -103,6 +104,7 @@ class FlankProt:
 	
 	def next_element(self, neighb, nr):
 		'''przejście do kolejnego elementu'''
+		
 		nxt = self.check_element_dir(neighb, nr)
 		nr = self.elms[neighb]["nr"]
 		item = f"element{nr}"
@@ -112,7 +114,6 @@ class FlankProt:
 		'''sprawdza ost. zwrotnice w ochronie bocznej, ustawia sąsiedni element dla
 		nowej scieżki szukania drogi ochronnej'''
 		points = self.check_last_point(points, last_point)
-		# print(f"points {points}")
 		if not points:
 			raise BreakFunc
 		nr = self.elms[item]["nr"]

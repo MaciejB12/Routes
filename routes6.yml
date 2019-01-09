@@ -2,7 +2,7 @@ routes :
  # defaults : &li
   # nr   : 11
   # type : li
- element1 :
+ element11 :
   nr   : 11
   type : li 
   name : LIB
@@ -157,7 +157,7 @@ routes :
   sas2 : ~
   sas3 : ~
  element42 :
-  nr   : 29
+  nr   : 42
   type : signal 
   orientation : P
   name : Tz1
