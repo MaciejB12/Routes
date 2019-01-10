@@ -10,12 +10,12 @@ from routes_class import Routes
 from yaml import load
 from yaml import YAMLError
 
-fn = "routes3.yml" # z sys.argv pobierać
+fn = "routes6.yml" # z sys.argv pobierać
 rs = Routes(fn, "P")
 
 try:
-	for el in rs.elements:
-		e = rs.elements[el]
+	for el in rs.elms:
+		e = rs.elms[el]
 		type = e["type"]
 		try:
 			ort = e["orientation"]

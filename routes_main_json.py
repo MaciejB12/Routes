@@ -10,7 +10,7 @@ from routes_class import Routes
 import json
 
 filename = "routes3.json"
-routes = Routes(filename, "P")
+routes = Routes(filename, "N")
 
 try:
 	for element in routes.elms: # elms = elms_file["routes"]
