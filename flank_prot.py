@@ -14,8 +14,9 @@ class BreakFunc(Exception): pass
 
 class FlankProt:
 	
-	def __init__(self, filename, ort):
+	def __init__(self, filename, conf, ort):
 		try:
+			print(conf)
 			with open(filename) as f: # for YAML elms
 				elms_file = load(f)
 			# with open(filename) as f: # for JSON elms
@@ -27,7 +28,7 @@ class FlankProt:
 
 		self.elms = elms_file["routes"]
 		self.ort = ort
-		self.route_list, self.drs_list = [], []
+		self.routes, self.directs = [], []
 		self.n = 2
 	
 	def search_overlap(self, neighbour):
@@ -46,14 +47,14 @@ class FlankProt:
 			return 1
 		# czy element jest zwr skierowaną w dobrą stronę - może dawać ochr. boczną
 		elif self.elms[item]["type"] == "switch" and \
-			self.elms[item]["orientation"] == op_pos:
+			self.elms[item]["direct"] == op_pos:
 			return 1
 		# czy element jest końcem toru - nie może dawać ochrony bocznej - kończy wyszukiwanie ochr. bocznej
 		elif self.elms[item]["type"] == "eot":
 			return 2
 
 	def search_flank_prot(self, start_item, start_next):
-		pos = self.elms[start_item]["orientation"]
+		pos = self.elms[start_item]["direct"]
 		nr = self.elms[start_item]["nr"]
 		nxt, item = start_next, start_item
 		last_point, points = "", OrderedDict()
@@ -63,7 +64,7 @@ class FlankProt:
 				neighb_item = f"element{self.elms[item][nxt]}"
 				if self.check_flank(item, op_pos, nxt) == 1:	
 					# self.route[self.elms[item]['name']] = "ob"
-					self.route_list.append((self.elms[item]['name'], "ob"))
+					self.routes.append((self.elms[item]['name'], "ob"))
 					item = self.flank_end(start_item, points, last_point)
 					neighb_item = f"element{self.elms[item][start_next]}"			
 				elif self.check_flank(item, op_pos, nxt) == 2:
@@ -73,17 +74,17 @@ class FlankProt:
 					pass # w tym przypadku to nie jest el. dający ochr. boczną
 				# zwr kierunkowa w ścieżce szukania ochr. bocznej
 				if self.elms[item]["type"] == "switch" and \
-					self.elms[item]["orientation"] == pos and \
+					self.elms[item]["direct"] == pos and \
 					item != start_item:
 					last_point = self.elms[item]["name"]
 					nxt = self.check_point(points, last_point)
 					neighb_item = f"element{self.elms[item][nxt]}"
 				# nastawienie zwr w ochr bocznej - do modyfikacji
 				if self.elms[neighb_item]["type"] == "switch" and \
-					self.elms[neighb_item]["orientation"] == op_pos:
+					self.elms[neighb_item]["direct"] == op_pos:
 					z = self.set_flank_prot_point(neighb_item, nr)
 					# self.drs[self.elms[neighb_item]["name"]] = z
-					self.drs_list.append((self.elms[neighb_item]["name"], z))
+					self.directs.append((self.elms[neighb_item]["name"], z))
 					# print(f"kier zwr {self.elms[neighb_item]['name']} w ochr bocz: {z} {op_pos}")
 				
 				nxt, nr, item = self.next_element(neighb_item, nr)
@@ -104,7 +105,7 @@ class FlankProt:
 	
 	def next_element(self, neighb, nr):
 		'''przejście do kolejnego elementu'''
-		
+		# print(f"NEXT ELEMENT {neighb}, {nr}")
 		nxt = self.check_element_dir(neighb, nr)
 		nr = self.elms[neighb]["nr"]
 		item = f"element{nr}"

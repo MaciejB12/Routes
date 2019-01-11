@@ -10,16 +10,16 @@ from routes_class import Routes
 import json
 
 filename = "routes3.json"
-routes = Routes(filename, "N")
+rs = Routes(filename, "N")
 
 try:
-	for element in routes.elms: # elms = elms_file["routes"]
-		e = routes.elms[element]
+	for element in rs.elms: # elms = elms_file["routes"]
+		e = rs.elms[element]
 		_type = e["type"]
 		try:
 			ort = e["orientation"]
-			if _type == "signal" and ort == routes.ort:
-				routes.search_elements(element, ort)
+			if _type == "signal" and ort == rs.ort:
+				rs.search_elements(element, ort)
 		except KeyError as error:
 			# print(f"No key {error} in element {element}")
 			continue	

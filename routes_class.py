@@ -13,33 +13,32 @@ from flank_prot import FlankProt
 
 # TODO: 
 # 1. elementy typu string takie jak: signal, eot, dj pobierać z pliku config
-# 2. pokazać kierunek ustawionej zwrotnicy - w drodze jazdy i w ochr. bocznej
-# 3. nastawianie zwr jechanych z ostrza
-# 4. poprawić zapis do plików pkl
-# 5. kryterium zakończenia przebiegów poc. i man.
-# 6. zrobić helpa - argparse
+# 2. nastawianie zwr jechanych z ostrza
+# 3. pokazywać kierunek nast. wszystkich zwr w drodze jazdy i ochr.
+# 4. kryterium zakończenia przebiegów poc. i man.
+# 5. zrobić helpa - argparse
 
 class BreakFunc(Exception): pass
 
 class Routes(FlankProt):
 	
-	def __init__(self, fn, ort):
-		super().__init__(fn, ort)
+	def __init__(self, fn, conf, ort):
+		super().__init__(fn, conf, ort)
 		
 	def check_route_end(self, neighb, item, name):
 		'''sprawdza jakiego typu jest element kończący przebieg'''
-		self.item = self.elms[item]
-		# czy element jest końcem drogi przebiegu (semaforem)
-		if self.item["type"] == "signal" and self.item["name"] != name and \
-			self.item["direct"] == self.ort:			
-			if self.item["prot"]: # szukaj w drodze ochr.
+		item = self.elms[item]
+		# czy element jest sygnałem końcowym
+		if item["type"] == "signal" and item["name"] != name and \
+			item["direct"] == self.ort:
+			if item["prot"]: # szukaj w drodze ochr.
 				self.search_overlap(neighb)
 			return True
-		elif self.item["type"] == "li": # line iface
+		elif item["type"] == "li":   # line iface
 			return True
-		elif self.item["type"] == "eot": # kozioł oporowy
+		elif item["type"] == "eot":  # kozioł oporowy
 			return True
-		elif self.item["type"] == "dest": # koniec przebiegu man.
+		elif item["type"] == "dest": # koniec przebiegu man.
 			return True
 		return False
 		
@@ -48,54 +47,54 @@ class Routes(FlankProt):
 		elem = self.elms[element]
 		nr = elem["nr"]
 		name = elem["name"]
-		item = f"elem{nr}" # etykieta elem. pocz.
+		item = element # element{nr} etykieta elem. pocz.
+		# self.item = self.elms[item]
 		nxt, last_point, points = "sas2", "", OrderedDict()
-
-		try:		
+		try:
 			while True:
-				self.routes.append((self.item["name"], "dj"))
-				neighb = f"element{self.item[nxt]}" # etykieta sąsiedniego el.
+				it = self.elms[item]
+				self.routes.append((it["name"], "dj"))
+				neighb = f"element{it[nxt]}" # etykieta el. sąs.
 				if self.check_route_end(neighb, item, name):
 					nr = self.route_end(element, points, last_point)
-					item = f"elem{nr}"
-					neighb = f"elem{self.item['sas2']}"
+					item = f"element{nr}"
+					neighb = f"element{self.elms[item]['sas2']}"
 
-				if self.item["type"] == "switch":
-					if self.item["direct"] == self.ort:
-						last_point = self.item["name"] # ost. zwr. w przebiegu
+				if it["type"] == "switch":
+					if it["direct"] == self.ort:
+						last_point = it["name"] # ost. zwr. w przebiegu
 						nxt = self.check_point(points, last_point)
 						# dodaj el. do listy zwr. kierunkowych
 						self.directs.append((last_point, nxt)) 
-						neighb = f"element{self.item[nxt]}"
+						neighb = f"element{it[nxt]}"
 						# kier. szuk. ochr. bocz.
 						flank = self.flank_dir(nxt) 
 					self.search_flank_prot(item, flank)
 
 				flank = self.check_point_dir(neighb, nr) # kier. szuk. ochr. bocz.
 				nxt, nr, item = self.next_element(neighb, nr) # kolejny el.
-		# opuść funkcje 
+
+		except KeyError as err:
+			print(f"Key Error: {err}")
 		except BreakFunc:
-			print(f"\nKoniec przebiegów od sygnału: {self.elms[element]['name']}")
-			
-	def flank_dir(self, nxt):
-		if nxt == "sas3":
-			return "sas2"
-		return "sas3"
+			print(f"\nKoniec przebiegów od sygnału: {elem['name']}")
 	
 	def route_end(self, elem, points, last_point):
 		'''sprawdza ost. zwrotnicę w przebiegu, ustawia sąsiedni element
 		dla nowego przebiegu'''
 		points = self.check_last_point(points, last_point)
-		self.write_route()
-		self.routes.append(f"Przebieg {self.n}")
-		self.directs.append(f"Przebieg {self.n}")
+		d = {"dict.pkl": self.routes, "dirs.pkl": self.directs}
+		for i in d:
+			self.write(i, d[i])
+		for i in d:
+			d[i].append(f"Przebieg {self.n}")
 		self.n += 1
 		if not points:
 			raise BreakFunc # jeżeli słownik zwrotnic jest pusty to wyjątek
 		
 		nr = self.elms[elem]["nr"]
 		item = f"element{nr}"
-		self.route_list.append((self.item["name"], "dj"))  # 1 el. nast. przebiegu
+		d["dict.pkl"].append((self.elms[item]["name"], "dj"))  # 1 el. nast. przebiegu
 		return nr
 	
 	def check_point_dir(self, neighb, nr):
@@ -106,13 +105,15 @@ class Routes(FlankProt):
 		elif neighb["sas3"] == nr:
 			return "sas2"
 		return None
-
-	def write_route(self):
-		'''zapis do pkl - do poprawy - powtórzenia'''
-		with open("dict.pkl", "wb") as r:
-			pickle.dump(self.route_list, r)
-		with open("dirs.pkl", "wb") as d:
-			pickle.dump(self.drs_list, d)
+	
+	def flank_dir(self, nxt):
+		if nxt == "sas3":
+			return "sas2"
+		return "sas3"
+	
+	def write(self, file, obj):
+		with open(file, "wb") as f:
+			pickle.dump(obj, f)
 			
 if __name__== "__main__":
 	fn = "routes2.json"

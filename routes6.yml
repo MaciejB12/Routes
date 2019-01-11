@@ -1,8 +1,8 @@
 routes :
- defaults : &li
-  nr   : 11
-  type : li
-  orientation : N
+ # defaults : &li
+ # nr   : 11
+ # type : li
+ # direct : N
  element11 :
   nr   : 11
   type : li 
@@ -13,7 +13,7 @@ routes :
  element12 :
   nr   : 12
   type : signal 
-  orientation : N
+  direct : N
   name : B
   sas1 : 11
   sas2 : 13
@@ -29,7 +29,7 @@ routes :
  element14 :
   nr   : 14
   type : switch
-  orientation : N
+  direct : N
   name : Z1
   sas1 : 13
   sas2 : 15
@@ -44,7 +44,7 @@ routes :
  element16 :
   nr : 16
   type : switch
-  orientation : P
+  direct : P
   name : Z9
   sas1 : 17
   sas2 : 15
@@ -59,7 +59,7 @@ routes :
  element18 :
   nr   : 18
   type : signal 
-  orientation : P
+  direct : P
   name : K
   sas1 : 19
   sas2 : 17
@@ -82,7 +82,7 @@ routes :
  element22 :
   nr   : 22
   type : signal 
-  orientation : N
+  direct : N
   name : A
   sas1 : 21
   sas2 : 23
@@ -98,7 +98,7 @@ routes :
  element24 :
   nr : 24
   type : switch
-  orientation : P
+  direct : P
   name : Z2
   sas1 : 25
   sas2 : 23
@@ -106,7 +106,7 @@ routes :
  element25 :
   nr : 25
   type : switch
-  orientation : N
+  direct : N
   name : Z3
   sas1 : 24
   sas2 : 26
@@ -114,7 +114,7 @@ routes :
  element26 :
   nr : 26
   type : switch
-  orientation : P
+  direct : P
   name : Z7
   sas1 : 27
   sas2 : 25
@@ -122,7 +122,7 @@ routes :
  element27 :
   nr : 27
   type : switch
-  orientation : N
+  direct : N
   name : Z8
   sas1 : 26
   sas2 : 28
@@ -137,7 +137,7 @@ routes :
  element29 :
   nr   : 29
   type : signal 
-  orientation : P
+  direct : P
   name : H
   sas1 : 30
   sas2 : 28
@@ -160,7 +160,7 @@ routes :
  element42 :
   nr   : 42
   type : signal 
-  orientation : P
+  direct : P
   name : Tz1
   sas1 : 43
   sas2 : 41
@@ -176,7 +176,7 @@ routes :
  element44 :
   nr   : 44
   type : signal 
-  orientation : N
+  direct : N
   name : C
   sas1 : 43
   sas2 : 45
@@ -185,7 +185,7 @@ routes :
  element45 :
   nr : 45
   type : switch
-  orientation : P
+  direct : P
   name : Z4
   sas1 : 46
   sas2 : 44
@@ -193,7 +193,7 @@ routes :
  element46 :
   nr : 46
   type : switch
-  orientation : P
+  direct : P
   name : Z5
   sas1 : 47
   sas2 : 45
@@ -201,7 +201,7 @@ routes :
  element47 :
   nr : 47
   type : switch
-  orientation : N
+  direct : N
   name : Z6
   sas1 : 46
   sas2 : 48
@@ -209,7 +209,7 @@ routes :
  element48 :
   nr   : 48
   type : signal 
-  orientation : P
+  direct : P
   name : G
   sas1 : 49
   sas2 : 47
@@ -225,7 +225,7 @@ routes :
  element50 :
   nr   : 50
   type : signal 
-  orientation : N
+  direct : N
   name : Tz2
   sas1 : 49
   sas2 : 51
@@ -241,7 +241,7 @@ routes :
  element61 :
   nr   : 61
   type : dest
-  orientation : P
+  direct : P
   name : Sh1
   sas1 : 62
   sas2 : ~
@@ -249,7 +249,7 @@ routes :
  element62 :
   nr   : 62
   type : sh_signal 
-  orientation : N
+  direct : N
   name : Tm1
   sas1 : 61
   sas2 : 63
@@ -258,7 +258,7 @@ routes :
  element63 :
   nr   : 63
   type : switch
-  orientation : N
+  direct : N
   name : Z10
   sas1 : 62
   sas2 : 46
@@ -266,7 +266,7 @@ routes :
  element64 :
   nr   : 64
   type : sh_signal 
-  orientation : P
+  direct : P
   name : Tm2
   sas1 : 65
   sas2 : 63
@@ -275,7 +275,7 @@ routes :
  element65 :
   nr   : 65
   type : dest
-  orientation : N
+  direct : N
   name : Sh2
   sas1 : 64
   sas2 : ~
